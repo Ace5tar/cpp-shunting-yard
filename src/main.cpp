@@ -1,5 +1,10 @@
 #include <iostream>
+#include "types/Stack.h"
 
 int main() {
-  std::cout << "Hello World!" << std::endl;
+  Stack stack;
+
+  stack.push("test");
+
+  std::cout << stack.peek() << std::endl;
 }
