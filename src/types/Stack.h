@@ -1,3 +1,4 @@
+#include "Node.h"
 
 #ifndef STACK_H
 #define STACK_H
@@ -24,11 +25,6 @@ class Stack {
     bool isEmpty();
 
   private:
-    // Single node for linked list implementation
-    struct Node {
-      const char* data;
-      Node* next;
-    };
 
     // Head of the linked list implementation
     Node* head;

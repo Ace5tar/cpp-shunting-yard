@@ -12,13 +12,11 @@ Stack::~Stack() {
 void Stack::RecursiveDeallocate(Node* node) {
   if (!node->next) {return;}
   RecursiveDeallocate(node->next);
-  delete node->data;
   delete node;
 }
 
 int Stack::push(const char* in_data) {
-  Node* node = new Node();
-  node->data = in_data;
+  Node* node = new Node(in_data);
   node->next = head->next;
   head->next = node;
   
