@@ -22,6 +22,18 @@ class Operator {
     // Return the ossociativity for this operator
     Associativity getAssociativity();
 
+  protected:
+
+    // Protected constructor for derived classes
+    Operator(
+      int in_precedence,
+      char in_representation,
+      Associativity in_associativity)
+      :
+      precedence(in_precedence),
+      representation(in_representation),
+      associativity(in_associativity) {}
+
   private:
 
     // The precendence of this operator, defined once in header file

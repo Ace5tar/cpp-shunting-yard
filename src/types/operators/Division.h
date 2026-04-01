@@ -3,23 +3,20 @@
 #ifndef DIVISION_H
 #define DIVISION_H
 
-class Division : Operator {
+class Division : public Operator {
   public:
+
+    // Constructor
+    Division() : Operator(
+      3, // Precedence
+      '/', // Representation
+      LEFT // Associativity
+    ) {}
+    
     // Function of this operator
     double func(double a, double b) {
       return a / b; 
     }
-
-  private:
-
-    // Precedence of this operator
-    int precedence = 3;
-
-    // Representation of this operator
-    char representation = '/';
-
-    // Associativity of this operator
-    Associativity associativity = LEFT;
 };
 
 #endif

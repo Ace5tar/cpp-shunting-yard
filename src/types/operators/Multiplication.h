@@ -3,23 +3,20 @@
 #ifndef MULTIPLICATION_H
 #define MULTIPLICATION_H
 
-class Multiplication : Operator {
+class Multiplication : public Operator {
   public:
+
+    // Constructor
+    Multiplication() : Operator(
+      3, // Precedence
+      '*', // Representation
+      LEFT // Associativity
+    ) {}
+    
     // Function of this operator
     double func(double a, double b) {
       return a * b; 
     }
-
-  private:
-
-    // Precedence of this operator
-    int precedence = 3;
-
-    // Representation of this operator
-    char representation = '*';
-
-    // Associativity of this operator
-    Associativity associativity = LEFT;
 };
 
 #endif
