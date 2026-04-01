@@ -32,5 +32,6 @@ int Stack::pop() {
 }
 
 const char* Stack::peek() {
+  if (head->next == nullptr) { return nullptr; }
   return head->next->data;
 }
