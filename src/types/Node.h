@@ -11,11 +11,6 @@ struct Node{
   }
 
   Node() {}
-
-  ~Node() {
-    delete[] data;
-  }
-
 };
 
 #endif
