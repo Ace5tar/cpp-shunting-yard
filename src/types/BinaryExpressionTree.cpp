@@ -55,19 +55,27 @@ BinaryExpressionTree::~BinaryExpressionTree() {
 }
     
 void BinaryExpressionTree::printAsPrefix() {
+  std::cout << "Prefix: ";
+  prefixRecursive(std::cout, head);
+  std::cout << std::endl;
 
 }
 
 void BinaryExpressionTree::printAsInfix() {
-
+  std::cout << "Infix: ";
+  infixRecursive(std::cout, head);
+  std::cout << std::endl;
 }
 
 void BinaryExpressionTree::printAsPostfix() {
+  std::cout << "Postfix: ";
+  postfixRecursive(std::cout, head);
+  std::cout << std::endl;
 
 }
 
 double BinaryExpressionTree::getEval() {
-  return 0;
+  return getEvalRecursive(head);
 }
 
 Queue BinaryExpressionTree::infixToPostfix(Queue& in_queue) {
@@ -138,19 +146,50 @@ Queue BinaryExpressionTree::infixToPostfix(Queue& in_queue) {
 }
 
 std::ostream& BinaryExpressionTree::prefixRecursive(std::ostream& os, BinaryNode* nodePtr) {
+
+  os << " " << nodePtr->data;
+  if (nodePtr->left) { prefixRecursive(os, nodePtr->left);}
+  if (nodePtr->right) { prefixRecursive(os, nodePtr->right);}
+
   return os;
 }
 
 std::ostream& BinaryExpressionTree::infixRecursive(std::ostream& os, BinaryNode* nodePtr) {
+  
+  if (nodePtr->left) {
+    os << " (";
+    infixRecursive(os, nodePtr->left);
+  }
+  os << " " << nodePtr->data;
+  if (nodePtr->right) {
+    infixRecursive(os, nodePtr->right);
+    os << " )";
+  }
+
   return os;
 }
 
 std::ostream& BinaryExpressionTree::postfixRecursive(std::ostream& os, BinaryNode* nodePtr) {
+
+  if (nodePtr->left) { prefixRecursive(os, nodePtr->left);}
+  if (nodePtr->right) { prefixRecursive(os, nodePtr->right);}
+  os << " " << nodePtr->data;
+
   return os;
 }
 
-int getEvalRecursive(BinaryNode* nodePtr) {
-  return 0;
+int BinaryExpressionTree::getEvalRecursive(BinaryNode* nodePtr) {
+
+  const char* token = nodePtr->data;
+  Operator* opPtr = hashTable.getOperator(*token);
+
+  char* end;
+
+  if (!opPtr) { return strtod(token, &end); }
+
+  return opPtr->func(
+      getEvalRecursive(nodePtr->left),
+      getEvalRecursive(nodePtr->right));
 }
 
 void BinaryExpressionTree::RecursiveDeallocate(BinaryNode* nodePtr) {

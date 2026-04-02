@@ -9,12 +9,20 @@ Queue parseInput(char* rawInput);
 
 int main(int argc, char* argv[]) {
 
+  std::cout << "Input expression: ";
+
   char* in = new char[80];
   std::cin.getline(in, 80);
 
   Queue parsed = parseInput(in);
 
   BinaryExpressionTree exprTree = BinaryExpressionTree(parsed);
+
+  exprTree.printAsPrefix();
+  exprTree.printAsInfix();
+  exprTree.printAsPostfix();
+
+  std::cout << "Evaluation: "<< exprTree.getEval() << std::endl;
 
   delete in;
 
