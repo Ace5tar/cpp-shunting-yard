@@ -12,14 +12,14 @@ class HashTable {
     int insert(Operator* in_operator);
 
     // Get the operator linked to the given character
-    Operator* getOperator(char opChar);
+    Operator* getOperator(const char opChar);
   private:
 
     // Internal array used
     Operator* internalArray[256] = {nullptr};
 
-    // Hashing value (uses but representation of the char)
-    int hash(char opChar);
+    // Hashing value (uses bit representation of the char)
+    int hash(const char opChar);
     int hash(Operator* in_operator);
     
 };

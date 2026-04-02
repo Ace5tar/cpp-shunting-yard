@@ -13,7 +13,7 @@ int HashTable::hash(Operator* in_operator) {
   return (int)(in_operator->getRepresentation());
 }
 
-int HashTable::hash(char opChar) {
+int HashTable::hash(const char opChar) {
   return (int)opChar;
 }
 
@@ -24,6 +24,6 @@ int HashTable::insert(Operator* in_operator) {
   return 0;
 }
 
-Operator* HashTable::getOperator(char opChar) {
+Operator* HashTable::getOperator(const char opChar) {
   return internalArray[hash(opChar)];
 }

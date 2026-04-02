@@ -2,21 +2,16 @@
 #ifndef BIN_NODE_H
 #define BIN_NODE_H
 
-struct Node{
+struct BinaryNode{
   const char* data;
-  Node* left;
-  Node* right;
+  BinaryNode* left;
+  BinaryNode* right;
 
-  Node(const char*& in_data) {
+  BinaryNode(const char*& in_data) {
     data = in_data;
   }
 
-  Node() {}
-
-  ~Node() {
-    delete[] data;
-  }
-
+  BinaryNode() {}
 };
 
 #endif
