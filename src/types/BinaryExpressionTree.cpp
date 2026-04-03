@@ -171,8 +171,8 @@ std::ostream& BinaryExpressionTree::infixRecursive(std::ostream& os, BinaryNode*
 
 std::ostream& BinaryExpressionTree::postfixRecursive(std::ostream& os, BinaryNode* nodePtr) {
 
-  if (nodePtr->left) { prefixRecursive(os, nodePtr->left);}
-  if (nodePtr->right) { prefixRecursive(os, nodePtr->right);}
+  if (nodePtr->left) { postfixRecursive(os, nodePtr->left);}
+  if (nodePtr->right) { postfixRecursive(os, nodePtr->right);}
   os << " " << nodePtr->data;
 
   return os;
